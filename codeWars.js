@@ -412,3 +412,384 @@ function countWords(str) {
 function remove (string) {
     return string.endsWith('!') ? string.slice(0, -1) : string
 }
+
+
+// Well of Ideas - Easy Version
+function well(x){
+  let count = 0
+    for (let i = 0; i < x.length; i++) {
+        let mot = x[i]
+        let good = mot == 'good'
+        if (good) {
+            count ++
+        }
+    }
+    if (count == 0 ){
+        return 'Fail!'
+    } else if (count <=2){
+        return 'Publish!'
+    }else {
+        return 'I smell a series!'
+    }
+}
+
+// Discover The Original Price
+function discoverOriginalPrice(discountedPrice, salePercentage){
+     const originalPrice = discountedPrice / (1 - salePercentage / 100)
+    return +(originalPrice.toFixed(2));
+}
+
+// Calculate average
+function findAverage(array) {
+    if (array.length ==0 ) {return 0}
+    return array.reduce((acc, curr)=> acc + curr, 0)/array.length 
+}
+
+// simple calculator
+function calculator(a, b, sign) {
+    // Vérifie si a ou b ne sont pas des nombres
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        return 'unknown value';
+    }
+
+    // Exécute en fonction de l'opérateur
+    if (sign === '+') {
+        return a + b;
+    } else if (sign === '-') {
+        return a - b;
+    } else if (sign === '*') {
+        return a * b;
+    } else if (sign === '/') {
+        return a / b;
+    } else {
+        return 'unknown value'; // Opérateur non reconnu
+    }
+}
+
+// Reverse words
+function reverseWords(str) {
+    return str.split(' ').map(mot => mot.split('').reverse().join('')).join(' ')
+}
+
+// Is it a palindrome?
+function isPalindrome(x) {
+    return x.split('').reverse().join('').toLowerCase() == x.toLowerCase()
+}
+
+
+// Palindromes Here and There
+function convertPalindromes(numbers) {
+    return numbers.map(num => num.toString().split('').reverse().join('') == num ? 1 : 0)
+};
+
+// Are the numbers in order?
+function inAscOrder(arr) {
+    let array = arr.slice().sort((a, b) => a - b)
+    return JSON.stringify(array) === JSON.stringify(arr)
+}
+
+// Count the Monkeys!
+function monkeyCount(n) {
+  let result = []
+    for (let i = 1; i <= n; i++) {
+        result.push(i)
+    }
+    return result
+}
+
+// Removing Elements
+function removeEveryOther(arr){
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+        if (i % 2 == 0) {
+            result.push(arr[i])
+        }     
+    }
+    return result
+}
+
+// Return Two Highest Values in List
+function twoHighest(arr) {
+    if(JSON.stringify(arr) == '[]') {
+        return []
+    }
+    else if (arr.length == 1) {
+        return arr
+    }
+    let max1 = 0
+    let max2 = 0
+    for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+        if(max1 < element) {
+            max2 = max1
+            max1 = element
+        }
+        else if(element > max2 && element < max1) {
+            max2 = element
+        }
+    }
+    return [max1, max2]
+}
+
+// Message Validator
+function isAValidMessage(message) {
+  let i = 0;
+
+  while (i < message.length) {
+    let nombre = '';
+    while (i < message.length && isDigit(message[i])) {
+      nombre += message[i];
+      i++;
+    }
+
+    if (nombre === '') return false;
+
+    const taille = +(nombre);
+    const mot = message.slice(i, i + taille);
+    if (mot.length !== taille) return false;
+
+    i += taille;
+  }
+
+  return true;
+}
+
+function isDigit(char) {
+    return char >= '0' && char <= '9';
+}
+
+// Find the unique number
+function findUniq(arr) {
+  for (let i = 0; i < arr.length; i++) {
+        if (arr.indexOf(arr[i]) === arr.lastIndexOf(arr[i])) {
+            return arr[i];
+        }
+    }
+}
+
+
+// Find Multiples of a Number
+function findMultiples(integer, limit) {
+    let result = [];
+    for (let i = integer; i <= limit; i++) {
+        if(i % integer == 0) {
+            result.push(i)
+        }
+    }
+    return result
+}
+
+// Sum Arrays
+function sum (numbers) {
+  return numbers.reduce((acc, curr) => acc + curr, 0)
+}
+
+// Sum of Digits / Digital Root
+function digitalRoot(n) {
+    n = n.toString();
+    while (n.length > 1) {
+        n = n.split('').reduce((acc, curr) => acc + Number(curr), 0).toString();
+    }
+    return Number(n);
+}
+
+// Create Phone Number
+function createPhoneNumber(numbers){
+    let result = numbers.join('')
+    return `(${result.slice(0, 3)}) ${result.slice(3, 6)}-${result.slice(6)}`
+}
+
+
+// Remove the minimum
+function removeSmallest(numbers) {
+    if (numbers.length === 0) return [];
+    const minIndex = numbers.indexOf(Math.min(...numbers));
+    return numbers.slice(0, minIndex).concat(numbers.slice(minIndex + 1));
+}
+
+// Adding Big Numbers
+function add(a, b) {
+  let i = a.length - 1;
+  let j = b.length - 1;
+  let retenue = 0;
+  let resultat = '';
+
+  while (i >= 0 || j >= 0 || retenue > 0) {
+    const chiffreA = i >= 0 ? +a[i] : 0;
+    const chiffreB = j >= 0 ? +b[j] : 0;
+    const somme = chiffreA + chiffreB + retenue;
+    resultat = (somme % 10) + resultat;
+    retenue = Math.floor(somme / 10);
+    i--;
+    j--;
+  }
+
+  return resultat;
+}
+
+// They say that only the name is long enough to attract attention. They also said that only a simple Kata will have someone to solve it. This is a sadly story #1: Are they opposite?
+function isOpposite(s1, s2) {
+  if (s1 === "" || s2 === "") return false;
+  if (s1.length !== s2.length) return false;
+
+  for (let i = 0; i < s1.length; i++) {
+    if (s1[i] === s2[i]) return false;
+    if (s1[i].toLowerCase() !== s2[i].toLowerCase()) return false;
+  }
+
+  return true;
+}
+
+// Not very secure
+function alphanumeric(string){
+    if (string.length === 0) {
+        return false;
+    } 
+    
+    const validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    for (let i = 0; i < string.length; i++) {
+        if (!validChars.includes(string[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// String incrementer
+function incrementString(strng) {
+    let numPart = "";
+    let strPart = "";
+
+    for (let i = strng.length - 1; i >= 0; i--) {
+        if (strng[i] >= '0' && strng[i] <= '9') {
+            numPart = strng[i] + numPart;
+        } else {
+            strPart = strng.slice(0, i + 1);
+            break;
+        }
+    }
+
+    if (numPart === "") {
+        return strng + "1";
+    }
+
+    let incrementedNum = (parseInt(numPart, 10) + 1).toString();
+    while (incrementedNum.length < numPart.length) {
+        incrementedNum = "0" + incrementedNum;
+    }
+
+    return strPart + incrementedNum; 
+}
+
+// Simple Fun #176: Reverse Letter
+function reverseLetter(str) {
+    let mot = 'abcdefghijklmnopqrstuvwxyz'
+    return str.split('').map(e => mot.includes(e) ? e : '').reverse().join('')
+}
+
+// Scrabble Score
+function scrabbleScore(str) {
+    const value = {
+        'a': 1, 'e': 1, 'i': 1, 'o': 1,'u' : 1, 'l': 1, 'n': 1, 'r': 1, 's': 1, 't' : 1,
+        'd': 2, 'g': 2,
+        'b': 3, 'c': 3, 'm': 3, 'p': 3,
+        'f': 4, 'h': 4, 'v': 4, 'w': 4, 'y': 4,
+        'k': 5,
+        'j': 8, 'x': 8,
+        'q': 10, 'z': 10
+    }
+    let count = 0;
+    for (let i = 0; i < str.length; i++) {
+        const lettre = str[i].toLowerCase()
+        if (value[lettre]) {
+            count += value[lettre];
+        }        
+    }
+    return count
+}
+
+// Multiply the number
+function multiply(number) {
+    return number < 0 
+        ? number * 5 ** (String(number).length - 1) 
+        : number * 5 ** String(number).length;
+}
+
+// Unique string characters
+function solve(a, b) {
+    let result = '';
+    for (let i = 0; i < a.length; i++) {
+        if (!b.includes(a[i])) {
+            result += a[i];
+        }
+    }
+    for (let i = 0; i < b.length; i++) {
+        if (!a.includes(b[i])) {
+            result += b[i];
+        }
+    }
+    return result;
+};
+
+// Generate user links
+function generateLink(user) {
+    return `http://www.codewars.com/users/${encodeURIComponent(user)}`
+}
+
+// How good are you really?
+function betterThanAverage(classPoints, yourPoints) {
+    return yourPoints > classPoints.reduce((acc, curr) => acc + curr, 0)  / classPoints.length
+}
+
+// Remove duplicates from list
+function distinct(a) {
+    let result = []
+    for (let i = 0; i < a.length; i++) {
+        if (!result.includes(a[i])) {
+            result.push(a[i])
+        }
+    }
+    return result
+}
+
+// Student's Final Grade
+function finalGrade(exam, projects) {
+  return (exam > 90 || projects > 10) ? 100
+       : (exam > 75 && projects >= 5) ? 90
+       : (exam > 50 && projects >= 2) ? 75
+       : 0;
+}
+
+// Keep Hydrated!
+function litres(time) {
+  return Math.floor(time * 0.5);
+}
+
+// Sum The Strings
+function sumStr(a,b) {
+    return (+a + +b).toString()
+}
+
+
+// Add Length
+function addLength(str) {
+    return str.split(' ').map(mot => mot + ` ${mot.length}`)
+}
+
+// Exclamation marks series #2: Remove all exclamation marks from the end of sentence
+function remove(string) {  
+    while (string.endsWith('!')) {
+        string = string.slice(0, -1);
+    }
+    return string;
+}
+
+// Drink about
+function peopleWithAgeDrink(old) {
+    return `drink ${old < 14 ? "toddy" : old < 18 ? "coke" : old < 21 ? "beer" : "whisky"}`;
+}
+
+// Mexican Wave
+function wave(str){
+   return str.split() 
+}
