@@ -1,15 +1,15 @@
-npm init -y
+# 📦 Dépôt CodeWars.js
 
-npm i mocha chai
+Bienvenue sur mon dépôt GitHub dédié à la résolution de katas CodeWars en JavaScript !
 
-// Ajouter ça dans le package.json
-"type": "module";
+## 📁 Fichier principal
 
-// Ajouter .js sur 3Shads dans l'auto import
-import { accum } from './camelCase.js';
+- `codeWars.js` : Ce fichier contient mes solutions aux différents exercices (katas) proposés sur [CodeWars](https://www.codewars.com/). Chaque fonction est commentée pour en faciliter la compréhension.
 
-npx mocha exo.test.js
+## 📌 Objectif
 
+Ce projet a pour but de :
+- Suivre ma progression sur CodeWars.
+- Regrouper mes solutions dans un seul fichier.
+- Améliorer mes compétences en JavaScript à travers la pratique.
 
-if function for array
-expect (...).deep.equal
